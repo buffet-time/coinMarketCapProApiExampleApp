@@ -1,0 +1,16 @@
+.toolbar {
+	top: 0;
+	position: sticky;
+	position: -webkit-sticky;
+	z-index: 50;
+	width: 100%;
+}
+
+mat-card {
+	margin: 20px;
+}
+
+mat-grid-tile {
+	margin-bottom: 8px;
+	cursor: pointer;
+}

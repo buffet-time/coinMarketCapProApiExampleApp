@@ -1,0 +1,40 @@
+<div [class.app-dark-theme]="true">
+    <mat-sidenav-container fullscreen class="sidenav-container">
+		<mat-toolbar class="toolbar">
+			Coin Market Cap 3rd party api app
+		</mat-toolbar>
+
+		<mat-card>
+			<mat-card-header>
+				<mat-card-title>CryptoCurrency Market Overview</mat-card-title>
+				<mat-card-subtitle>Top 15 current currencies.</mat-card-subtitle>
+			</mat-card-header>
+
+			<mat-card-content>
+				<div *ngIf="finishedLoading">
+					<mat-grid-list cols="1" rowHeight="40px">
+						<mat-grid-tile *ngFor="let currency of currenciesJson.data | keyvalue; let i = index" 
+								(click)="selectCurrency(currency.value.id)" class="grid-tile"> 
+							{{currency.value.name}}
+						</mat-grid-tile>
+					</mat-grid-list>
+				</div>
+			</mat-card-content>
+		</mat-card>
+
+		<mat-card *ngIf="displayInfo">	
+			<mat-card-header>
+				<mat-card-title>Selected Cryptocurrency Details</mat-card-title>
+				<mat-card-subtitle>Name and links of selected currency</mat-card-subtitle>
+			</mat-card-header>
+
+			<mat-card-content *ngFor="let currency of selectedCurrency.data | keyvalue; let i = index">
+				Name: {{currency.value.name}} <br><br>
+				Ticker Symbol: {{currency.value.symbol}}<br><br>
+				Website: {{currency.value.urls.website}}<br><br>
+				Source Code: {{currency.value.urls.source_code}}<br><br>
+				Twitter: {{currency.value.urls.twitter}}
+			</mat-card-content>
+		</mat-card>
+    </mat-sidenav-container>
+</div>
